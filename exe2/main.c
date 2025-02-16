@@ -20,6 +20,10 @@ int main() {
   gpio_init(LED_PIN);        
   gpio_set_dir(LED_PIN, GPIO_OUT); 
 
+  gpio_set_irq_enabled_with_callback(
+    BTN_PIN,  GPIO_IRQ_EDGE_FALL, true, &btn_callback);
+
+
   while (true) {
     if (btn_flag){
       btn_flag = 0;
